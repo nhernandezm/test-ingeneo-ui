@@ -1,0 +1,35 @@
+<div class="content" role="main">
+    <button class="card card-small" (click)="newDelivery()" tabindex="0">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        <span>Nuevo Entrega</span>
+      </button>
+    <form class="form-group">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Puerto/Bodega</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Valor Producto</th>
+                    <th scope="col">Descuento</th>
+                    <th scope="col">Valor Total</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let delivery of deliveries">
+                        <th scope="row">{{delivery.product}}</th>                        
+                        <th scope="row">{{delivery.client}}</th>
+                        <th scope="row">{{delivery.place}}</th>
+                        <th scope="row">{{delivery.city}}</th>
+                        <th scope="row">{{delivery.value_product}}</th>
+                        <th scope="row">{{delivery.value_discount}}</th>
+                        <th scope="row">{{delivery.value_total}}</th>
+                    </tr>
+                
+            </tbody>
+        </table>
+    </form>
+</div>

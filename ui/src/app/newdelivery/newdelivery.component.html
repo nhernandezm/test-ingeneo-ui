@@ -1,0 +1,82 @@
+<div class="content" role="main">
+    <form class="form-group" (ngSubmit)="saveDelivery()">
+
+        <div class="form-group col-md-12">
+            <input type="radio" [(ngModel)]="type_delivery" name="type_delivery" value="0"> Camiones
+            <input type="radio" [(ngModel)]="type_delivery" name="type_delivery" value="1"> Marítima
+        </div>
+        
+
+        <div class="form-group col-md-12">
+            <label>Numero de guia</label>
+            <input type="text" class="form-control" [(ngModel)]="guide_number" name="guide_number" placeholder="Numero de guia">
+        </div>
+
+        <div class="form-group col-md-12" *ngIf="type_delivery == 0">
+            <label>Placa</label>
+            <input type="text" class="form-control" [(ngModel)]="registration_number" name="registration_number" placeholder="Placa">
+        </div>
+
+        <div class="form-group col-md-12" *ngIf="type_delivery == 1">
+            <label>Flete</label>
+            <input type="text" class="form-control" [(ngModel)]="fleet_number" name="fleet_number" placeholder="Flete">
+        </div>
+
+        
+
+        <div class="form-group col-md-12" *ngIf="type_delivery == 0">
+            <label>Bodega</label>
+            <select  [(ngModel)]="id_cellar"  class="form-control" name="cellar" placeholder="Bodega">
+                <option *ngFor="let cellar of dataComboBox.cellars" [ngValue]="cellar.id">{{cellar.name}}</option>
+              </select>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label>Cliente</label>
+            <select [(ngModel)]="id_client"   class="form-control" name="client" placeholder="Cliente">
+                <option *ngFor="let client of dataComboBox.clients" [ngValue]="client.id">{{client.name}}</option>
+              </select>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label>Producto</label>
+            <select  [(ngModel)]="id_product"  class="form-control" name="product" placeholder="Producto">
+                <option *ngFor="let product of dataComboBox.products" [ngValue]="product.id">{{product.name}}</option>
+              </select>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label>Cantidad</label>
+            <input type="number" class="form-control" [(ngModel)]="amount" name="amount" placeholder="Cantidad">
+        </div>
+
+        <div class="form-group col-md-12">
+            <label>Fecha registro</label>
+            <input type="date" class="form-control" [(ngModel)]="registration_date" name="registration_date" placeholder="Fecha registro">
+        </div>
+
+        <div class="form-group col-md-12">
+            <label>Fecha entrega</label>
+            <input type="date" class="form-control" [(ngModel)]="deliver_date" name="deliver_date" placeholder="Fecha entrega">
+        </div>
+
+        <div class="form-group col-md-12" *ngIf="type_delivery == 1">
+            <label>Puerto de entrega</label>
+            <select [(ngModel)]="id_port" class="form-control" name="port" placeholder="Puerto">
+                <option *ngFor="let port of dataComboBox.ports" [ngValue]="port.id">{{port.name}}</option>
+              </select>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label>Precio de envio</label>
+            <input type="number" class="form-control" [(ngModel)]="price" name="price" placeholder="Precio de envio">
+        </div>
+        <br>
+
+        <div  class="form-group col-md-12">
+            <button type="submit"  ngClick class="btn btn-success">Guardar</button>
+            <button type="button"  ngClick class="btn btn-default" (click)="back()">Atras</button>
+        </div>
+
+    </form>
+</div>
